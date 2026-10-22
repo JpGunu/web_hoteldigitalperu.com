@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/jpeg" href="assets/img/logo/logo-hotel.jpg">
+    <link rel="apple-touch-icon" href="assets/img/logo/logo-hotel.jpg">
+    <meta name="theme-color" content="#0B1B33">
+
+    <title>Solicitar demostración | Hotel Digital Perú</title>
+    <meta name="description" content="Llena tus datos y solicita una demostración gratuita del sistema para hoteles, hostales y hospedajes. Te contactamos por WhatsApp.">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="canonical" href="https://hoteldigitalperu.com/registrar-datos">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/mejoras.css">
+    <style>
+      body{background:#FFF9F0;font-family:'Poppins',system-ui,Arial,sans-serif;color:#1E293B}
+      .pago-card{background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(11,27,51,.14);padding:1.8rem}
+      .pago-logo{max-height:100px;width:auto;background:#fff;border-radius:14px;padding:6px 14px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+      .pago-header{background:linear-gradient(120deg,#0B1B33,#14365B 60%,#0B7E7A);border-radius:18px;color:#fff;padding:1.8rem;text-align:center;margin-bottom:1.2rem}
+      .pago-header h2{color:#fff;margin:.8rem 0 0;font-weight:800}
+      .pago-header p{color:#D6E4F0;margin:.3rem 0 0}
+      #boton_enviar{background:linear-gradient(135deg,#E8C97A,#C9A86A) !important;border:none !important;color:#0B1B33 !important;font-weight:800;padding:.8rem 2.2rem;border-radius:100px;width:100%;font-size:1.05rem}
+      .req{color:#B42318}
+    </style>
+</head>
+
+<body class="container">
+    <header class="pago-header mt-3">
+        <a href="/" aria-label="Volver al inicio"><img src="assets/img/logo/logo-hotel.jpg" alt="Hotel Digital Perú" class="pago-logo" width="260" height="100"></a>
+        <h2>🎯 Solicita tu demostración gratuita</h2>
+        <p>Sistema en la nube • Soporte por WhatsApp +51 984 733 538 • <a href="/" style="color:#E8C97A">← Volver</a> • <a href="/pago" style="color:#E8C97A">Ir a Pagos 💳</a></p>
+    </header>
+
+    <section class="pago-card mb-5">
+        <form id="demoform" novalidate>
+            <h5>👤 Tus datos personales</h5>
+            <div class="form-row">
+                <div class="form-group col-md-3"><label for="doc">DNI <span class="req">*</span></label><input type="text" id="doc" class="form-control" placeholder="Ej. 12345678" required></div>
+                <div class="form-group col-md-5"><label for="nombre">Nombre completo <span class="req">*</span></label><input type="text" id="nombre" class="form-control" placeholder="Nombres y apellidos" required></div>
+                <div class="form-group col-md-4"><label for="telefono">Teléfono / Celular <span class="req">*</span></label><input type="tel" id="telefono" class="form-control" placeholder="Ej. 984 733 538" required></div>
+                <div class="form-group col-md-12"><label for="correo">Correo electrónico <span class="req">*</span></label><input type="email" id="correo" class="form-control" placeholder="tucorreo@gmail.com" required></div>
+            </div>
+            <hr>
+            <h5>🏨 Datos de tu hotel / hostal</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label for="ruc_hotel">RUC del hotel <span class="req">*</span></label><input type="text" id="ruc_hotel" class="form-control" placeholder="Ej. 20123456789" required></div>
+                <div class="form-group col-md-6"><label for="nombre_hotel">Nombre del Hotel / Hostal <span class="req">*</span></label><input type="text" id="nombre_hotel" class="form-control" placeholder="Ej. Hotel Paraíso" required></div>
+                <div class="form-group col-md-6"><label for="cant_hab">Cantidad de habitaciones <span class="req">*</span></label><input type="number" min="1" max="500" id="cant_hab" class="form-control" placeholder="Ej. 15" required></div>
+                <div class="form-group col-md-6"><label for="comoseentero">¿Cómo te enteraste? <span class="req">*</span></label><select id="comoseentero" class="form-control" required><option value="">Selecciona...</option><option>Google</option><option>Facebook</option><option>Youtube / TikTok</option><option>Recomendación</option><option>Otro</option></select></div>
+                <div class="form-group col-md-12"><label for="ubi_hotel">Dirección / Ubicación <span class="req">*</span></label><input type="text" id="ubi_hotel" class="form-control" placeholder="Provincia / Distrito / Jr. Av. Calle" required></div>
+                <div class="form-group col-md-12"><label for="des_hotel">Servicios con los que cuenta <span class="req">*</span></label><textarea rows="3" id="des_hotel" class="form-control" placeholder="Terraza, Cochera, Agua caliente, Restaurante, Piscina..." required></textarea></div>
+            </div>
+            <button type="submit" id="boton_enviar">Solicitar demo por WhatsApp 💬</button>
+            <div id="message" class="mt-2 text-center" role="status"></div>
+        </form>
+    </section>
+
+    <script>
+    document.getElementById('demoform').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var f = e.target;
+        if (!f.checkValidity()) { f.reportValidity(); document.getElementById('message').textContent = '⚠️ Completa todos los campos marcados con *'; return; }
+        var v = function (id) { return document.getElementById(id).value.trim(); };
+        var texto = 'Hola, quiero una DEMOSTRACIÓN del sistema 🏨%0A%0A' +
+            '*DNI:* ' + encodeURIComponent(v('doc')) + '%0A' +
+            '*Nombre:* ' + encodeURIComponent(v('nombre')) + '%0A' +
+            '*Teléfono:* ' + encodeURIComponent(v('telefono')) + '%0A' +
+            '*Correo:* ' + encodeURIComponent(v('correo')) + '%0A' +
+            '*RUC:* ' + encodeURIComponent(v('ruc_hotel')) + '%0A' +
+            '*Hotel:* ' + encodeURIComponent(v('nombre_hotel')) + '%0A' +
+            '*Habitaciones:* ' + encodeURIComponent(v('cant_hab')) + '%0A' +
+            '*Se enteró por:* ' + encodeURIComponent(v('comoseentero')) + '%0A' +
+            '*Ubicación:* ' + encodeURIComponent(v('ubi_hotel')) + '%0A' +
+            '*Servicios:* ' + encodeURIComponent(v('des_hotel'));
+        document.getElementById('message').textContent = '✅ Abriendo WhatsApp...';
+        window.open('https://api.whatsapp.com/send?phone=51984733538&text=' + texto, '_blank');
+    });
+    </script>
+</body>
+</html>

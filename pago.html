@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/jpeg" href="assets/img/logo/logo-hotel.jpg">
+    <link rel="apple-touch-icon" href="assets/img/logo/logo-hotel.jpg">
+    <meta name="theme-color" content="#0B1B33">
+
+    <title>Métodos de pago | Hotel Digital Perú</title>
+    <meta name="description" content="Paga tu sistema para hotel por BCP, Interbank, Yape o Plin. Para dólares u otra moneda extranjera coordina con el administrador por WhatsApp.">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <link rel="canonical" href="https://hoteldigitalperu.com/pago">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/mejoras.css">
+    <style>
+      body{background:#FFF9F0;font-family:'Poppins',system-ui,Arial,sans-serif;color:#1E293B}
+      .pago-card{background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(11,27,51,.14);padding:1.8rem}
+      .pago-logo{max-height:100px;width:auto;background:#fff;border-radius:14px;padding:6px 14px;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+      .pago-header{background:linear-gradient(120deg,#0B1B33,#14365B 60%,#0B7E7A);border-radius:18px;color:#fff;padding:1.8rem;text-align:center;margin-bottom:1.2rem}
+      .pago-header h2{color:#fff;margin:.8rem 0 0;font-weight:800}
+      .pago-header p{color:#D6E4F0;margin:.3rem 0 0}
+      .pay-method{border:1px solid #E6EAF0;border-radius:14px;padding:1rem;margin-bottom:.8rem;display:flex;gap:1rem;align-items:center}
+      .pay-method .icon{flex:0 0 52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:#F1F5F9}
+      .pay-method b{color:#0B1B33}
+      .pay-method code{background:#F1F5F9;padding:.2rem .6rem;border-radius:8px;font-size:1rem}
+      .copy-btn{border:1px solid #CBD5E1;background:#fff;border-radius:8px;padding:.2rem .7rem;font-size:.8rem;font-weight:700;cursor:pointer}
+      .copy-btn:hover{background:#0B1B33;color:#fff}
+      .alert-foreign{background:#FFF7E6;border:2px dashed #C9A86A;border-radius:14px;padding:1.1rem;text-align:center}
+      .btn-gold{background:linear-gradient(135deg,#E8C97A,#C9A86A);border:none;color:#0B1B33;font-weight:800;padding:.8rem 1.5rem;border-radius:100px;display:inline-block}
+    </style>
+</head>
+
+<body class="container">
+    <header class="pago-header mt-3">
+        <a href="/" aria-label="Volver al inicio"><img src="assets/img/logo/logo-hotel.jpg" alt="Hotel Digital Perú" class="pago-logo" width="260" height="100"></a>
+        <h2>💳 Métodos de pago</h2>
+        <p>Elige tu medio favorito • A nombre de <strong style="color:#E8C97A">Jean Paul Gutierrez Nuñez</strong> • <a href="/" style="color:#E8C97A">← Volver</a> • <a href="/registrar-datos" style="color:#E8C97A">Pedir demo 🎯</a></p>
+    </header>
+
+    <div class="row mb-5">
+        <div class="col-md-7 col-12">
+            <div class="pago-card">
+                <h5 class="mb-3">🇵🇪 Pagos nacionales (Soles)</h5>
+                <div class="pay-method" style="border-color:#C9A86A;background:#FFFBF0"><div class="icon">📱</div><div><b>Yape / Plin ⭐ Recomendado</b><br>Número: <code>+51 984 733 538</code> <button class="copy-btn" data-copy="984733538">Copiar</button></div></div>
+                <div class="pay-method"><div class="icon">🏦</div><div><b>BCP</b><br>Cuenta: <code id="c-bcp">191-22121772-0-23</code> <button class="copy-btn" data-copy="191-22121772-0-23">Copiar</button></div></div>
+                <div class="pay-method"><div class="icon">🏦</div><div><b>Interbank</b><br>Cuenta: <code id="c-ibk">2983125728063</code> <button class="copy-btn" data-copy="2983125728063">Copiar</button></div></div>
+                <hr>
+                <p class="text-muted mb-1"><strong>Paso 1:</strong> Realiza la transferencia.</p>
+                <p class="text-muted"><strong>Paso 2:</strong> Envíanos tu voucher por WhatsApp para activar tu cuenta hoy mismo.</p>
+                <a class="btn-gold" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=51984733538&text=Hola%20ya%20realic%C3%A9%20el%20pago%2C%20adjunto%20mi%20voucher%20para%20activar%20mi%20cuenta">📩 Enviar voucher por WhatsApp</a>
+            </div>
+        </div>
+        <div class="col-md-5 col-12 mt-3 mt-md-0">
+            <div class="pago-card text-center">
+                <h5>QR Yape</h5>
+                <img src="assets/img/yape_jp.jpg" alt="QR Yape Hotel Digital Perú" loading="lazy" style="max-width:100%;height:auto;max-height:420px;border-radius:14px;">
+                <hr>
+                <div class="alert-foreign">
+                    <h5>💵 ¿Dólares u otra moneda del extranjero?</h5>
+                    <p class="mb-2">Para pagos en <strong>dólares</strong> u otra moneda, el tipo de cambio y la cuenta varían.</p>
+                    <p class="mb-3"><strong>Coordínalo directamente con el administrador</strong> antes de pagar.</p>
+                    <a class="btn-gold" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=51984733538&text=Hola%20quiero%20pagar%20en%20d%C3%B3lares%20u%20otra%20moneda%20extranjera%2C%20%C2%BFme%20indica%20los%20datos%3F">💬 Hablar con el administrador</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.querySelectorAll('.copy-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+            var t = b.getAttribute('data-copy');
+            if (navigator.clipboard) { navigator.clipboard.writeText(t); }
+            b.textContent = '✓ Copiado';
+            setTimeout(function(){ b.textContent = 'Copiar'; }, 1500);
+        });
+    });
+    </script>
+</body>
+</html>

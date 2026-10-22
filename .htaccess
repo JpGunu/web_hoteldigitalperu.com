@@ -1,0 +1,80 @@
+# ============================================================
+#  Hotel Digital Perú - Configuración Apache / LiteSpeed
+#  Hosting: Namecheap (cPanel) - public_html
+#  URLs limpias (sin .html) + SEO + performance + seguridad
+# ============================================================
+
+# ---------- 1. Página por defecto ----------
+DirectoryIndex index.html
+
+# ---------- 2. Forzar HTTPS + URLs limpias ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 2a) Si llega por http:// redirigir a https://
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # 2b) Redirigir www -> sin www (evita contenido duplicado)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # ---------- 3. Quitar la extensión .html de la URL pública ----------
+  # 3a) Redirección 301: /pago.html  ->  /pago   (conserva el SEO)
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 3b) Reescritura interna: /pago  ->  /pago.html  (URL limpia en el navegador)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.*)$ /$1.html [L]
+</IfModule>
+
+# ---------- 4. Página 404 propia ----------
+ErrorDocument 404 /404.html
+
+# ---------- 5. Páginas privadas: refuerzo noindex a nivel de servidor ----------
+<IfModule mod_headers.c>
+  <Files "pago.html">
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+  </Files>
+  <Files "registrar-datos.html">
+    Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+  </Files>
+  <Files "404.html">
+    Header set X-Robots-Tag "noindex, follow"
+  </Files>
+</IfModule>
+
+# ---------- 6. Caché del navegador (mejora Core Web Vitals) ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                 "access plus 1 hour"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType application/json           "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 6 months"
+  ExpiresByType image/png                 "access plus 6 months"
+  ExpiresByType image/svg+xml             "access plus 6 months"
+  ExpiresByType image/webp                "access plus 6 months"
+  ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+# ---------- 7. Compresión (reduce el peso de la web) ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------- 8. Cabeceras de seguridad ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header unset X-Powered-By
+</IfModule>
